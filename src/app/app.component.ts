@@ -7,15 +7,19 @@ import { IGitHubUser } from './git-hub-user';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    private apiUrl: string = 'https://api.github.com/users/angular';
-    message: string = 'Hello Angular!';
+export class AppComponent {
+    private apiUrl: string = 'https://api.github.com/users/';
+    pageHeader: string = 'GitHub Viewer 2.0';
     gitHubuser: IGitHubUser;
-    userSearch: string;
+    repositories: any;
+    userSearch: string = "";
 
     constructor(private http: HttpClient) { }
 
-    ngOnInit(): void {
-        this.http.get<IGitHubUser>(this.apiUrl).subscribe(data => this.gitHubuser = data);
+    search(): void {
+        this.http.get<IGitHubUser>(this.apiUrl + this.userSearch).subscribe((data) => {
+            this.gitHubuser = data;
+            this.http.get(data.repos_url).subscribe(repos => this.repositories = repos);
+        });
     }
 }
