@@ -14,12 +14,12 @@
     <div class="row">
         <form (ngSubmit)="search()" #searchForm="ngForm" ngNativeValidate>
             <div class="row">
-                <div class="col s6 push-s3">
-                    <div class="input-field col s11">
+                <div class="col s12 l6 push-l3">
+                    <div class="input-field col s8 m10">
                         <label for="search">Search</label>
                         <input type="search" name="userSearch" [(ngModel)]="userSearch" required autocomplete="off" />
                     </div>
-                    <div class="input-field col s1">
+                    <div class="input-field col s4 m2">
                         <button class="btn" type="submit">Search</button>
                     </div>
                 </div>
@@ -29,10 +29,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col s3">
+            <div class="col s12 m3">
                 <app-git-hub-user-view [gitHubuser]="gitHubuser"></app-git-hub-user-view>
             </div>
-            <div class="col s9">
+            <div class="col s12 m9">
                 <app-repository-list [repositories]="repositories"></app-repository-list>
             </div>
         </div>
