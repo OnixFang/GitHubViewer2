@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { IGitHubUser } from './git-hub-user';
+import { IGitHubUser } from './igit-hub-user';
 
 @Component({
     selector: 'app-root',

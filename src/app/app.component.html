@@ -11,40 +11,33 @@
 </header>
 
 <main class="main">
-    <div class="container">
-        <div class="row">
-            <form (ngSubmit)="search()" #searchForm="ngForm" ngNativeValidate>
-                <div class="row">
-                    <div class="input-field col s5">
+    <div class="row">
+        <form (ngSubmit)="search()" #searchForm="ngForm" ngNativeValidate>
+            <div class="row">
+                <div class="col s6 push-s3">
+                    <div class="input-field col s11">
                         <label for="search">Search</label>
                         <input type="search" name="userSearch" [(ngModel)]="userSearch" required autocomplete="off" />
                     </div>
-                    <div class="input-field col">
+                    <div class="input-field col s1">
                         <button class="btn" type="submit">Search</button>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+    </div>
 
-            <app-git-hub-user-view [gitHubuser]="gitHubuser"></app-git-hub-user-view>
-
-            <table *ngIf="gitHubuser" border="1">
-                <thead>
-                    <th>Name</th>
-                    <th>Stars</th>
-                    <th>Language</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let repo of repositories">
-                        <td>{{repo.name}}</td>
-                        <td>{{repo.stargazers_count}}</td>
-                        <td>{{repo.language}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <router-outlet></router-outlet>
+    <div class="container">
+        <div class="row">
+            <div class="col s3">
+                <app-git-hub-user-view [gitHubuser]="gitHubuser"></app-git-hub-user-view>
+            </div>
+            <div class="col s9">
+                <app-repository-list [repositories]="repositories"></app-repository-list>
+            </div>
         </div>
     </div>
+    <router-outlet></router-outlet>
 </main>
 
 <footer class="page-footer grey darken-4">

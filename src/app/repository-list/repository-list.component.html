@@ -1,0 +1,16 @@
+<div *ngIf="repositories" class="card-panel hoverable brown lighten-4">
+    <table class="highlight">
+        <thead>
+            <th>Repository Name</th>
+            <th>Starsgazers count</th>
+            <th>Programming Language</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let repo of repositories">
+                <td>{{repo.name}}</td>
+                <td>{{repo.stargazers_count}}</td>
+                <td>{{repo.language}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

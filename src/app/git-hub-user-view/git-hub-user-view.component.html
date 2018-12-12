@@ -1,4 +1,29 @@
 <div *ngIf="gitHubuser">
-    <h2>Name: {{gitHubuser.name}}</h2>
-        <img [src]="gitHubuser.avatar_url" [title]="gitHubuser.name" />
+    <div class="card hoverable">
+        <div class="card-image">
+            <img [src]="gitHubuser.avatar_url" [title]="gitHubuser.name" />
+        </div>
+        <div class="card-content">
+            <span class="card-title">{{gitHubuser.login}}</span>
+            <div>
+                <span style="font-weight: bold">Name: </span><span>{{gitHubuser.name}}</span>
+            </div>
+            <div *ngIf="gitHubuser.location">
+                <span style="font-weight: bold">Location: </span><span>{{gitHubuser.location}}</span>
+            </div>
+            <div *ngIf="gitHubuser.company">
+                <span style="font-weight: bold">Company: </span><span>{{gitHubuser.company}}</span>
+            </div>
+            <div *ngIf="gitHubuser.bio" style="margin-top: 1em">
+                <button class="btn activator">Bio</button>
+            </div>
+        </div>
+        <div class="card-action">
+            <a [href]="gitHubuser.html_url" target="_blank">GitHub Page</a>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4" style="font-weight: bold">Bio<i class="material-icons right">close</i></span>
+            <p>{{gitHubuser.bio}}</p>
+        </div>
+    </div>
 </div>

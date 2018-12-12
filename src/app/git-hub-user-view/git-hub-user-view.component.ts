@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IGitHubUser } from '../git-hub-user';
+import { IGitHubUser } from '../igit-hub-user';
 
 @Component({
     selector: 'app-git-hub-user-view',
