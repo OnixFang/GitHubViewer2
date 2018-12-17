@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { IGitHubUser } from './igit-hub-user';
+import { GithubService } from './github.service';
+import { IRepository } from './irepository';
 
 @Component({
     selector: 'app-root',
@@ -11,15 +12,30 @@ export class AppComponent {
     private apiUrl: string = 'https://api.github.com/users/';
     pageHeader: string = 'GitHub Viewer 2.0';
     gitHubuser: IGitHubUser;
-    repositories: any;
+    repositories: IRepository[];
     userSearch: string = "";
+    errorMessage: string;
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private githubService: GithubService) { }
 
     search(): void {
-        this.http.get<IGitHubUser>(this.apiUrl + this.userSearch).subscribe((data) => {
-            this.gitHubuser = data;
-            this.http.get(data.repos_url).subscribe(repos => this.repositories = repos);
-        });
+        this.githubService.getUser(this.userSearch).subscribe(
+            (user) => {
+                this.errorMessage = null;
+                this.gitHubuser = user;
+                this.githubService.getRepos(this.gitHubuser).subscribe(repos => this.repositories = repos);
+            },
+            (error) => {
+                if (error.status === 403) {
+                    this.errorMessage = error.error.message;
+                    this.gitHubuser = null;
+                    this.repositories = null;
+                } else {
+                    this.errorMessage = error.message;
+                    this.gitHubuser = null;
+                    this.repositories = null;
+                }
+            });
     }
 }
