@@ -9,6 +9,7 @@ import { IRepository } from './irepository';
 })
 export class GithubService {
     private apiUrl: string = 'https://api.github.com/users/';
+    private repoUrl: string = "https://api.github.com/repos/";
 
     constructor(private http: HttpClient) { }
 
@@ -19,4 +20,8 @@ export class GithubService {
     getRepos(user): Observable<IRepository[]> {
         return this.http.get<IRepository[]>(user.repos_url);
     }
+
+    getRepo(username, reponame): Observable<IRepository> {
+        return this.http.get<IRepository>(this.repoUrl + username + "/" + reponame);
+    };
 }

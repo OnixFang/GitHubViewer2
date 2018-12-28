@@ -9,7 +9,6 @@ import { GithubService } from '../github.service';
     styleUrls: ['./user-search.component.css']
 })
 export class UserSearchComponent {
-    pageHeader: string = 'GitHub Viewer 2.0';
     gitHubuser: IGitHubUser;
     repositories: IRepository[];
     userSearch: string = "";

@@ -1,0 +1,17 @@
+<div>
+    <h1>Repo name: {{repo.name}}</h1>
+    <h2>Issues: {{repo.open_issues}}</h2>
+    <h3>Contributors:</h3>
+    <table border="1">
+        <tbody>
+            <tr ng-repeat="user in repo.contributors">
+                <td><img class="avatar"></td>
+                <td>{{user.login}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a >Back to Search</a><br />
+    <a >Back to {{username}}</a>
+
+</div>
