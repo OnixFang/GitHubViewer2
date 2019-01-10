@@ -1,0 +1,35 @@
+<div *ngIf="repo">
+    <div class="container" *ngIf="contributors">
+        <div class="row">
+            <div class="card hoverable brown lighten-4">
+                <div class="card-content">
+                    <span class="card-title"><strong>Repository: {{repo.name}}</strong></span>
+                    <span>Issues: {{repo.open_issues}}</span>
+                </div>
+                <div class="card-action">
+                    <a class="btn" [routerLink]="['/user', repo.owner.login]">Back to {{repo.owner.login}}</a>
+                </div>
+            </div>
+            <div class="card hoverable brown lighten-3">
+                <div class="card-content">
+                    <span class="card-title"><strong>Contributors:</strong></span>
+                    <div class="card-panel brown lighten-2">
+                        <table class="highlight responsive-table">
+                            <tbody>
+                                <tr *ngFor="let user of contributors" [routerLink]="['/user', user.login]" style="cursor: pointer;">
+                                    <td><img class="responsive-img" style="max-height: 100px" [src]="user.avatar_url"
+                                            [title]="user.name" /></td>
+                                    <td>
+                                        <h5>{{user.login}}</h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <a routerLink="/user-search">Back to Search</a>
+        </div>
+    </div>
+</div>
+<br />

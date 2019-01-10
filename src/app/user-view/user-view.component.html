@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row" *ngIf="errorMessage">
+        <div class="card-panel red darken-2 col s10 push-s1 l4 push-l4 center-align">{{errorMessage}}</div>
+    </div>
+    <div class="row">
+        <a routerLink="/user-search">Back to Search</a>
+    </div>
+    <div class="row" *ngIf="gitHubuser">
+        <app-git-hub-user-view [gitHubuser]="gitHubuser"></app-git-hub-user-view>
+        <app-repository-list [repositories]="repositories"></app-repository-list>
+
+    </div>
+    <div class="row">
+        <a routerLink="/user-search">Back to Search</a>
+    </div>
+</div>

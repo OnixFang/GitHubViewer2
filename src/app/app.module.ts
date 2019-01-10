@@ -7,12 +7,18 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GitHubUserViewComponent } from './git-hub-user-view/git-hub-user-view.component';
 import { RepositoryListComponent } from './repository-list/repository-list.component';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { RepositoryViewComponent } from './repository-view/repository-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         GitHubUserViewComponent,
-        RepositoryListComponent
+        RepositoryListComponent,
+        UserSearchComponent,
+        RepositoryViewComponent,
+        UserViewComponent
     ],
     imports: [
         BrowserModule,
