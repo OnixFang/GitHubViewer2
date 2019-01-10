@@ -22,7 +22,6 @@ export class RepositoryViewComponent implements OnInit {
             (repo) => {
                 this.repo = repo;
                 this.githubService.getContributors(this.repo).subscribe(users => this.contributors = users);
-                console.log(this.repo);
             }
         );
     }

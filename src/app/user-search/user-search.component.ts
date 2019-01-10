@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IGitHubUser } from '../igit-hub-user';
-import { IRepository } from '../irepository';
 import { GithubService } from '../github.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-user-search',
@@ -9,32 +8,25 @@ import { GithubService } from '../github.service';
     styleUrls: ['./user-search.component.css']
 })
 export class UserSearchComponent {
-    gitHubuser: IGitHubUser;
-    repositories: IRepository[];
     userSearch: string = "";
     errorMessage: string;
 
     constructor(
-        private githubService: GithubService) { }
+        private githubService: GithubService,
+        private router: Router) { }
 
     search(): void {
         this.githubService.getUser(this.userSearch).subscribe(
-            (user) => {
+            () => {
                 this.errorMessage = null;
-                this.gitHubuser = user;
-                this.githubService.getRepos(this.gitHubuser).subscribe(repos => this.repositories = repos);
+                this.router.navigate(['/user/' + this.userSearch]);
             },
             (error) => {
                 if (error.status === 403) {
                     this.errorMessage = error.error.message;
-                    this.gitHubuser = null;
-                    this.repositories = null;
                 } else {
                     this.errorMessage = error.message;
-                    this.gitHubuser = null;
-                    this.repositories = null;
                 }
             });
-        this.userSearch = "";
     }
 }

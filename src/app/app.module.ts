@@ -9,6 +9,7 @@ import { GitHubUserViewComponent } from './git-hub-user-view/git-hub-user-view.c
 import { RepositoryListComponent } from './repository-list/repository-list.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { RepositoryViewComponent } from './repository-view/repository-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { RepositoryViewComponent } from './repository-view/repository-view.compo
         GitHubUserViewComponent,
         RepositoryListComponent,
         UserSearchComponent,
-        RepositoryViewComponent
+        RepositoryViewComponent,
+        UserViewComponent
     ],
     imports: [
         BrowserModule,
