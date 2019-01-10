@@ -1,17 +1,23 @@
-<div>
+<div *ngIf="repo">
     <h1>Repo name: {{repo.name}}</h1>
     <h2>Issues: {{repo.open_issues}}</h2>
-    <h3>Contributors:</h3>
-    <table border="1">
-        <tbody>
-            <tr ng-repeat="user in repo.contributors">
-                <td><img class="avatar"></td>
-                <td>{{user.login}}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a >Back to Search</a><br />
-    <a >Back to {{username}}</a>
-
+    <div *ngIf="contributors" class="container">
+        <div class="card-panel hoverable brown lighten-4">
+            <h3>Contributors:</h3>
+            <table class="highlight responsive-table">
+                <thead>
+                    <th>Picture</th>
+                    <th>Contributor name</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of contributors">
+                        <td><img class="responsive-img" style="max-height: 100px" [src]="user.avatar_url" [title]="user.name" /></td>
+                        <td>{{user.login}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a routerLink="/user-search">Back to Search</a>
+    </div>
 </div>
+<br />
