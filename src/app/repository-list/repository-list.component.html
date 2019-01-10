@@ -7,7 +7,7 @@
                 <th>Programming Language</th>
             </thead>
             <tbody>
-                <tr *ngFor="let repo of repositories">
+                <tr *ngFor="let repo of repositories" [routerLink]="['/', repo.owner.login, repo.name]" style="cursor: pointer;">
                     <td>{{repo.name}}</td>
                     <td>{{repo.stargazers_count}}</td>
                     <td>{{repo.language}}</td>
