@@ -9,5 +9,5 @@ app.use(express.static(appPath));
 
 app.get('*', (req, res) => { res.sendFile(appPath + 'GitHubViewer2/index.html'); });
 
-app.listen(port);
-console.log('App running on: ' + 'http://localhost:' + port);
+app.listen(process.env.PORT || port);
+console.log('App running...');
